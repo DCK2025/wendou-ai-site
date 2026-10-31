@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>WenDou Ai · 探寻星，遥未来</title>
+    <meta name="description" content="WenDou Ai构建会行动的 AI：桌面智能体 WenDou Agent 与开源智能体内核 WenDouOs。WenDou Agent 当前主推 Windows 版本。" />
+    <link rel="canonical" href="https://www.mvc1225.cn/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://www.mvc1225.cn/" />
+    <link rel="alternate" hreflang="en" href="https://www.mvc1225.cn/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.mvc1225.cn/" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="author" content="WenDou Ai · WenDou Ai" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="WenDou Ai · WenDou Ai" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="WenDou Ai · 探寻星，遥未来" />
+    <meta property="og:description" content="WenDou Ai构建会行动的 AI：桌面智能体 WenDou Agent 与开源智能体内核 WenDouOs。WenDou Agent 当前主推 Windows 版本。" />
+    <meta property="og:url" content="https://www.mvc1225.cn/" />
+    <meta property="og:image" content="/og-wendou-ai.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" href="assets/mvc.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preload" href="assets/manrope-e310b55a7f.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <link rel="stylesheet" href="assets/styles-V2N2JPJI.css?v=footer-brand-lockup" />
+    <script>
+      // 在首帧之前决定动效模式；脚本 2.5 秒内未接管时恢复静态显示，避免内容被隐藏
+      (function (d) {
+        var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        d.classList.add(reduce ? 'no-motion' : 'js-motion');
+        setTimeout(function () { if (!d.classList.contains('motion-ready')) d.classList.remove('js-motion'); }, 2500);
+      })(document.documentElement);
+    </script>
+    <script defer src="assets/main-UG5YFVUV.js?v=single-card-hover-1"></script>
+    <script defer src="assets/scrollbar.js?v=2"></script>
+    <script>
+      document.querySelectorAll(".packages [data-package]").forEach(card => {
+        card.addEventListener("click", () => {
+          document.querySelectorAll(".packages [data-package]").forEach(item => item.classList.toggle("is-selected", item === card));
+        });
+      });
+    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"WenDou Ai","alternateName":"WenDou Ai","url":"https://www.mvc1225.cn/","logo":"https://www.mvc1225.cn/icon-512.png","email":"zhangkongduan@gmail.com"},{"@type":"SoftwareApplication","name":"WenDou Agent","operatingSystem":"Windows 10+","applicationCategory":"DeveloperApplication","publisher":{"@type":"Organization","name":"WenDou Ai"}}]}</script>
+      <style>.brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:20px;font-weight:600;letter-spacing:.01em}.brand img{width:36px;height:36px;object-fit:cover;border-radius:10px}.app-icon img{width:100%;height:100%;object-fit:cover;border-radius:14px}</style>
+  <style>
+    .phone-screen{background:#fafaf9;color:#15161a}
+    .app{background:#fafaf9;color:#15161a}
+    .phone-header{border-color:#e6e6e2;color:#15161a}
+    .phone-header img{width:80px;height:auto;filter:brightness(0)}
+    .phone-agent-name{color:#737680}
+    .phone-menu{border-color:#666}.phone-menu:after{background:#666}
+    .p-bubble{border:0;background:#ededeb;color:#15161a}
+    .p-file{border-color:#e3e3df;background:#f4f4f1;color:#6d7077}
+    .p-status{border-color:#e7e7e3;background:#f4f4f2;color:#71737a}
+    .p-spinner{border-color:#deded9;border-top-color:#397cf6}
+    .p-status.is-done .p-spinner{border-color:#22a363;background:#22a363}
+    .p-actions{color:#777a82}
+    .p-question{border-color:#e7e7e3;background:#fff;color:#17181b}
+    .p-question p,.p-answer p{color:#40424a}
+    .p-choices b{border-color:#dcdcd8;background:#f7f7f5;color:#454750}
+    .p-choices b.is-primary{border-color:#202126;background:#202126;color:#fff}
+    .p-answer{border-color:#e7e7e3;background:#fff;color:#17181b}
+    .p-lines i{background:#e6e6e2}
+    .phone-composer{border-color:#e4e4e0;background:#f1f1ef;color:#8a8c94}
+    .lock{background:rgba(10,10,10,.96);color:#fafafa}.lock img{filter:none}
+    .phone-statusbar{position:absolute;z-index:2;inset:13px 20px auto;display:flex;justify-content:space-between;color:#17181b;font-size:10px;font-weight:650;letter-spacing:.01em}
+    .p-actions{font-size:10px}.p-answer strong{font-size:13px}.p-answer small{display:block;margin-top:9px;color:#777a82;font-size:10px}
+    .lock-caption{margin-top:6px;color:#ffffff9c;font-size:12px}.lock-indicator{position:absolute;bottom:18px;width:88px;height:4px;border-radius:9px;background:#fff9}
+  </style>
+</head>
+  <body class="page-home">
+    <a class="skip-link" href="#main">跳到正文</a>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="WenDou Ai 首页"><img src="assets/mvc.png" alt="" width="36" height="36" /><span>WenDou</span></a>
+        <nav class="site-nav" aria-label="主导航">
+          <a href="#fluxagent" data-nav="fluxagent">WenDou Agent</a>
+          <a href="#fluxos" data-nav="fluxos">WenDouOs</a>
+          <a href="#download" data-nav="download">下载</a>
+        </nav>
+        <div class="header-actions">
+          <a class="lang-link" href="en/index.html" hreflang="en" lang="en" aria-label="切换到英文">EN</a>
+          <a class="icon-link" href="https://github.com/DCK2025" aria-label="DCK2025 的 GitHub 主页" rel="noopener"><svg class="icon icon-fill" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          <a class="cta cta-small" href="#download"><span>下载</span><span class="cta-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></a>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+
+      <section class="hero" data-hero aria-labelledby="hero-title">
+        <canvas class="cosmos" data-cosmos data-wordmark="data:text/plain;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20157.86%2034%22%20role%3D%22img%22%20aria-label%3D%22WenDou%20Ai%22%3E%0A%20%20%3Ctitle%3EWenDou%20Ai%3C%2Ftitle%3E%0A%20%20%3Ctext%20x%3D%222%22%20y%3D%2227%22%20fill%3D%22%23f4f5f8%22%20font-family%3D%22Manrope%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2224%22%20font-weight%3D%22650%22%20letter-spacing%3D%22.1%22%3EWenDou%20Ai%3C%2Ftext%3E%0A%3C%2Fsvg%3E" aria-hidden="true"></canvas>
+        <div class="hero-content container" data-hero-content>
+          <h1 id="hero-title" class="hero-title" data-intro><span class="sr-only">WenDou Ai · </span>探寻星，遥未来</h1>
+          <p class="hero-lede" data-intro>我们构建会行动的 AI：在你电脑上完成任务的 WenDou Agent，以及驱动它的开源内核 WenDouOs。</p>
+          <div class="hero-actions" data-intro>
+            <a class="cta cta-solid" href="#download"><span>下载 WenDou Agent</span><span class="cta-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></a>
+            <a class="cta" href="#fluxos"><span>查看 WenDouOs</span><span class="cta-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></a>
+          </div>
+        </div>
+        <nav class="hero-index container" aria-label="主导航">
+          <a href="#fluxagent"><strong>WenDou Agent</strong><span>桌面智能体，现已开放下载</span></a>
+          <a href="#fluxos"><strong>WenDouOs</strong><span>开源智能体内核，MIT 许可</span></a>
+        </nav>
+      </section>
+
+      <section id="fluxagent" class="section" data-section aria-labelledby="fluxagent-title">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <h2 id="fluxagent-title" class="section-title"><span class="mask"><span>WenDou Agent</span></span></h2>
+            <p class="section-subtitle">把任务交给它，在你的电脑上完成。</p>
+            <p class="section-lede">WenDou Agent 在你选定的工作区里读写文件、运行终端、操作浏览器，一步步把事情做完。有影响的操作先等你批准，整个过程清楚可见。</p>
+            <div class="section-actions"><a class="cta cta-solid" href="#download"><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 3.5 10.5 2v8H2zm10-1.8L22 0v10h-10zM2 12h8.5v8L2 18.5zm10 0H22v10l-10-1.5z"/></svg><span>下载 Windows 版</span><span class="cta-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></a><span class="meta">Windows · WenDou.exe 安装包可下载</span></div>
+          </header>
+
+        </div>
+      </section>
+
+      <section id="fluxos" class="section" data-section aria-labelledby="fluxos-title">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <h2 id="fluxos-title" class="section-title"><span class="mask"><span>WenDouOs</span></span></h2>
+            <p class="section-subtitle">驱动它们的，是开源的智能体内核。</p>
+            <p class="section-lede">Dodaios 以 Python 为核心，由多个协作模块组成。此图根据源码中的调用与工作流展示聊天、路由、任务、安全和记忆的主要依赖。悬停模块可查看对应的直接依赖。</p>
+            <div class="section-actions"><a class="cta" href="https://github.com/DCK2025" rel="noopener"><svg class="icon icon-fill" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>在 GitHub 上查看</span><span class="cta-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></a><span class="meta">GitHub · DCK2025</span></div>
+          </header>
+          <div class="fluxos-grid" data-reveal>
+            <div class="code-panel">
+              <pre class="code" data-typing><code><span class="code-line"><span class="c-dim">$ </span><span class="c-cmd" data-cmd="gh repo list DCK2025">gh repo list DCK2025</span></span><span class="code-line"><span class="c-dim">$ </span><span class="c-cmd" data-cmd="cd WenDouOs &amp;&amp; npm ci">cd WenDouOs <span class="c-dim">&amp;&amp;</span> npm ci</span></span><span class="code-line"><span class="c-dim">$ </span><span class="c-cmd" data-cmd="npm run verify &amp;&amp; npm test">npm run verify <span class="c-dim">&amp;&amp;</span> npm test</span></span><span class="code-line"><span class="c-dim">$ </span><span class="caret"></span></span></code></pre>
+            </div>
+            <figure class="graph" data-graph>
+              <svg class="graph-svg" viewBox="0 0 760 440" role="list" aria-label="Dodaios 核心模块之间的依赖关系">
+        <g class="edges"><path class="edge" data-from="ui" data-to="agent_chat" data-layer="4" d="M380 61 C380 85 380 85 380 109" /><path class="edge" data-from="agent_chat" data-to="brain" data-layer="3" d="M380 143 C380 168 380 168 380 193" /><path class="edge" data-from="agent_chat" data-to="sessions" data-layer="3" d="M380 143 C380 261 250 261 250 379" /><path class="edge" data-from="agent_chat" data-to="memory" data-layer="3" d="M380 143 C380 215 285 215 285 287" /><path class="edge" data-from="brain" data-to="missions" data-layer="2" d="M380 227 C380 257 95 257 95 287" /><path class="edge" data-from="brain" data-to="memory" data-layer="2" d="M380 227 C380 257 285 257 285 287" /><path class="edge" data-from="brain" data-to="plugins" data-layer="2" d="M380 227 C380 257 475 257 475 287" /><path class="edge" data-from="brain" data-to="safety" data-layer="2" d="M380 227 C380 257 665 257 665 287" /><path class="edge" data-from="missions" data-to="safety" data-layer="1" d="M95 321 C95 304 665 304 665 287" /><path class="edge" data-from="plugins" data-to="safety" data-layer="1" d="M475 321 C475 304 665 304 665 287" /><path class="edge" data-from="sessions" data-to="core" data-layer="0" d="M250 413 C250 396 510 396 510 379" /><path class="edge" data-from="memory" data-to="core" data-layer="1" d="M285 321 C285 350 510 350 510 379" /><path class="edge" data-from="safety" data-to="core" data-layer="1" d="M665 321 C665 350 510 350 510 379" /></g>
+        <circle class="pulse" r="2.4" cx="-10" cy="-10" />
+        <g class="nodes"><g class="node" data-node="ui" data-layer="4" tabindex="0" role="listitem" aria-label="dodaios/ui"><rect x="305" y="27" width="150" height="34" rx="6" /><text x="380" y="48.5">UI</text></g><g class="node" data-node="agent_chat" data-layer="3" tabindex="0" role="listitem" aria-label="dodaios/agent_chat"><rect x="305" y="109" width="150" height="34" rx="6" /><text x="380" y="130.5">agent_chat</text></g><g class="node" data-node="brain" data-layer="2" tabindex="0" role="listitem" aria-label="dodaios/brain"><rect x="305" y="193" width="150" height="34" rx="6" /><text x="380" y="214.5">brain</text></g><g class="node" data-node="missions" data-layer="1" tabindex="0" role="listitem" aria-label="dodaios/missions"><rect x="20" y="287" width="150" height="34" rx="6" /><text x="95" y="308.5">missions</text></g><g class="node" data-node="memory" data-layer="1" tabindex="0" role="listitem" aria-label="dodaios/memory"><rect x="210" y="287" width="150" height="34" rx="6" /><text x="285" y="308.5">memory</text></g><g class="node" data-node="plugins" data-layer="1" tabindex="0" role="listitem" aria-label="dodaios/plugins"><rect x="400" y="287" width="150" height="34" rx="6" /><text x="475" y="308.5">plugins</text></g><g class="node" data-node="safety" data-layer="1" tabindex="0" role="listitem" aria-label="dodaios/safety"><rect x="590" y="287" width="150" height="34" rx="6" /><text x="665" y="308.5">safety</text></g><g class="node" data-node="sessions" data-layer="0" tabindex="0" role="listitem" aria-label="dodaios/sessions"><rect x="175" y="379" width="150" height="34" rx="6" /><text x="250" y="400.5">sessions</text></g><g class="node" data-node="core" data-layer="0" tabindex="0" role="listitem" aria-label="dodaios/core"><rect x="435" y="379" width="150" height="34" rx="6" /><text x="510" y="400.5">core</text></g></g>
+      </svg>
+              <figcaption class="caption">模块依赖关系。悬停一个模块可查看它直接调用的模块。</figcaption>
+            </figure>
+          </div>
+          <ul class="packages" role="list" data-stagger>
+            <li data-package="ui" data-reveal><code>dodaios/ui</code><p>桌面窗口、导航与前端视图</p></li>
+            <li data-package="agent_chat" data-reveal><code>dodaios/agent_chat</code><p>聊天会话、消息流、审批卡片与对话入口</p></li>
+            <li data-package="brain" data-reveal><code>dodaios/brain</code><p>请求理解、工具路由与 Agent 调度</p></li>
+            <li data-package="missions" data-reveal><code>dodaios/missions</code><p>Worker 派发、任务状态、Critic 审查与恢复</p></li>
+            <li data-package="memory" data-reveal><code>dodaios/memory</code><p>记忆检索、Wiki 知识整理与持久化</p></li>
+            <li data-package="plugins" data-reveal><code>dodaios/plugins</code><p>工具注册、执行入口与 MCP / 插件接入</p></li>
+            <li data-package="safety" data-reveal><code>dodaios/safety</code><p>风险分级、权限门控与高风险操作审批</p></li>
+            <li data-package="sessions" data-reveal><code>dodaios/sessions</code><p>会话状态、消息记录与恢复所需数据</p></li>
+            <li data-package="core" data-reveal><code>dodaios/core</code><p>配置、事件、进程和跨模块基础设施</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="download" class="section section-download" data-section aria-labelledby="download-title">
+        <div class="container">
+          <div class="download-head" data-reveal>
+            <div class="app-icon" aria-hidden="true"><img src="assets/mvc.png" alt="" width="52" height="52" /></div>
+            <h2 id="download-title" class="section-title"><span class="mask"><span>下载 WenDou Agent</span></span></h2>
+            <p class="section-lede">当前展示 Windows 版本。</p>
+            <div class="section-actions"><a class="cta cta-solid" href="download/fluxagent/1.0.1/WenDou.exe" download><svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 3.5 10.5 2v8H2zm10-1.8L22 0v10h-10zM2 12h8.5v8L2 18.5zm10 0H22v10l-10-1.5z"/></svg><span>下载 Windows 版</span><span class="cta-note">WenDou.exe</span></a></div>
+            <p class="meta">Windows 安装包 · WenDou.exe</p>
+          </div>
+          <div class="download-grid" data-stagger>
+            <div class="download-block" data-reveal><h3>Windows 版本</h3><p class="notice">Windows 安装程序 WenDou.exe 已提供下载。下载后双击运行安装。</p></div>
+            <div class="download-block" data-reveal><h3>其他平台</h3><dl class="platforms"><div><dt>macOS（Apple 芯片）</dt><dd>即将推出</dd></div><div><dt>Intel 芯片的 Mac</dt><dd>即将推出</dd></div></dl></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-main" data-reveal>
+        <div class="footer-brand">
+          <a class="footer-logo" href="index.html" aria-label="WenDou Ai 首页"><img src="assets/mvc.png" alt="" width="36" height="36" loading="lazy" /><span>WenDou Ai</span></a>
+          <p class="footer-slogan">探寻星，遥未来</p>
+          <a class="footer-mail" href="mailto:zhangkongduan@gmail.com">zhangkongduan@gmail.com</a>
+        </div>
+        <nav class="footer-nav" aria-label="页脚导航">
+          <div class="footer-column"><h2>产品</h2><a href="#fluxagent">WenDou Agent</a><a href="#fluxos">WenDouOs</a></div>
+          <div class="footer-column"><h2>资源</h2><a href="#download">下载 WenDou Agent</a><a href="https://github.com/DCK2025" rel="noopener">GitHub</a><a href="mailto:zhangkongduan@gmail.com">联系我们</a></div>
+          <div class="footer-column"><h2>条款</h2><a href="privacy/index.html">隐私政策</a><a href="terms/index.html">用户协议</a></div>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <p>© 2026 WenDou Ai 保留所有权利</p>
+      </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+

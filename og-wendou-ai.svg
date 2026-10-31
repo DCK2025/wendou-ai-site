@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="g"><stop stop-color="#18202d"/><stop offset="1" stop-color="#020304"/></radialGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#bac6d9" stop-opacity=".05"/><stop offset=".5" stop-color="#dbe4f3" stop-opacity=".7"/><stop offset="1" stop-color="#8392aa" stop-opacity=".08"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g fill="#e7efff" opacity=".45"><circle cx="91" cy="111" r="1.3"/><circle cx="234" cy="500" r="1"/><circle cx="1054" cy="139" r="1.4"/><circle cx="972" cy="477" r="1"/><circle cx="394" cy="85" r=".8"/><circle cx="817" cy="560" r="1.2"/></g>
+  <circle cx="600" cy="292" r="120" fill="none" stroke="url(#r)" stroke-width="3"/>
+  <circle cx="600" cy="292" r="103" fill="none" stroke="#d9e1ef" stroke-opacity=".22" stroke-width="1"/>
+  <text x="600" y="320" fill="#f4f5f8" font-family="Arial, sans-serif" font-size="78" font-weight="600" text-anchor="middle">WenDou Ai</text>
+  <text x="600" y="520" fill="#f4f5f8" font-family="Arial, sans-serif" font-size="27" text-anchor="middle" opacity=".72">探寻星，遥未来</text>
+</svg>
