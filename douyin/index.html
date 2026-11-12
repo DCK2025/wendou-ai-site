@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>抖音热点结构看板 · 2026-11-13</title>
+<meta name="description" content="抖音热榜 20 条热点的话题结构可视化：热度分布、类别构成、榜单形态与观察。" />
+<style>
+  :root{
+    --bg:#080910;
+    --panel:#101320;
+    --panel2:#151a2a;
+    --line:rgba(255,255,255,.08);
+    --text:#e9edf7;
+    --dim:#8a93a8;
+    --dim2:#5f6980;
+    --red:#fe2c55;
+    --cyan:#25f4ee;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1100px 560px at 12% -8%, rgba(254,44,85,.16), transparent 62%),
+      radial-gradient(900px 520px at 92% 2%, rgba(37,244,238,.11), transparent 58%),
+      var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    min-height:100vh;
+    padding:0 18px 72px;
+  }
+  .wrap{max-width:1160px;margin:0 auto}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0 0;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px;font-size:14px}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(254,44,85,.16),0 0 18px rgba(254,44,85,.65)}
+  .stamp{font-size:12.5px;color:var(--dim);font-variant-numeric:tabular-nums}
+  .hero{padding:38px 0 26px}
+  .hero h1{font-size:clamp(26px,4.6vw,44px);line-height:1.16;letter-spacing:-.6px;font-weight:800}
+  .hero h1 em{font-style:normal;background:linear-gradient(92deg,var(--red),#ff7a3d 55%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{margin-top:14px;color:var(--dim);max-width:660px;font-size:14.5px}
+  .hero .tagline{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--dim);background:rgba(255,255,255,.03)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+  .kpi{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .kpi .k{font-size:12px;color:var(--dim2);letter-spacing:.5px}
+  .kpi .v{font-size:24px;font-weight:750;margin-top:5px;font-variant-numeric:tabular-nums;letter-spacing:-.4px}
+  .kpi .v small{font-size:12px;color:var(--dim);font-weight:500;margin-left:3px}
+  .grid{display:grid;grid-template-columns:1.55fr 1fr;gap:14px;align-items:start}
+  .panel{background:linear-gradient(180deg,rgba(21,26,42,.9),rgba(16,19,32,.92));border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .panel h2{font-size:15px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:8px}
+  .panel h2 span{font-size:11.5px;color:var(--dim2);font-weight:400}
+  .panel .sub{margin-top:4px;color:var(--dim2);font-size:12.5px}
+  .bars{margin-top:16px;display:flex;flex-direction:column;gap:2px}
+  .row{display:grid;grid-template-columns:26px 1fr 74px;gap:10px;align-items:center;padding:7px 4px;border-radius:9px;transition:background .18s}
+  .row:hover{background:rgba(255,255,255,.045)}
+  .row .rk{font-size:12px;color:var(--dim2);text-align:right;font-variant-numeric:tabular-nums}
+  .row .rk.top{color:var(--red);font-weight:700}
+  .track{display:flex;align-items:center;gap:9px;min-width:0}
+  .bar{height:9px;border-radius:6px;width:0;transition:width .85s cubic-bezier(.2,.8,.2,1);flex:0 0 auto}
+  .txt{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .val{font-size:12.5px;color:var(--dim);text-align:right;font-variant-numeric:tabular-nums}
+  .val i{font-style:normal;color:var(--dim2);font-size:10.5px}
+  .donutwrap{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:12px}
+  #donut{width:186px;height:186px;border-radius:50%;position:relative;display:grid;place-items:center;transition:transform .3s}
+  #donut::after{content:"";position:absolute;inset:26px;border-radius:50%;background:#0c0f1a;border:1px solid var(--line)}
+  #donut .mid{position:relative;z-index:2;text-align:center}
+  #donut .mid b{display:block;font-size:22px;font-weight:750;letter-spacing:-.5px}
+  #donut .mid span{font-size:11px;color:var(--dim2)}
+  .legend{width:100%;display:flex;flex-direction:column;gap:7px}
+  .lg{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--dim);padding:3px 0}
+  .lg b{margin-left:auto;color:var(--text);font-variant-numeric:tabular-nums;font-weight:600}
+  .sw{width:9px;height:9px;border-radius:3px;flex:0 0 auto}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 14px}
+  .chip{font-size:12.5px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--dim);cursor:pointer;transition:.18s;font-family:inherit}
+  .chip:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+  .chip.on{background:linear-gradient(92deg,rgba(254,44,85,.9),rgba(255,122,61,.9));color:#fff;border-color:transparent;font-weight:600}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:12px}
+  .card{position:relative;background:linear-gradient(180deg,rgba(21,26,42,.9),rgba(14,17,29,.95));border:1px solid var(--line);border-radius:14px;padding:15px 16px 14px;transition:.2s;overflow:hidden}
+  .card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.18)}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c)}
+  .card .top{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .card .no{font-size:11.5px;font-weight:700;color:#080910;background:var(--c);border-radius:6px;padding:1px 7px;font-variant-numeric:tabular-nums}
+  .card .cat{font-size:11px;color:var(--dim2);margin-left:auto;padding:1.5px 8px;border-radius:999px;border:1px solid var(--line)}
+  .card h3{font-size:14px;font-weight:650;line-height:1.5;min-height:42px}
+  .card .heat{margin-top:10px;display:flex;align-items:baseline;gap:6px}
+  .card .heat b{font-size:17px;font-weight:750;letter-spacing:-.3px;font-variant-numeric:tabular-nums}
+  .card .heat span{font-size:11px;color:var(--dim2)}
+  .card .mini{margin-top:9px;height:4px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
+  .card .mini i{display:block;height:100%;width:0;border-radius:3px;background:var(--c);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+  .ana{margin-top:34px}
+  .note{margin-top:14px;display:grid;gap:10px}
+  .item{display:grid;grid-template-columns:26px 1fr;gap:12px;padding:13px 15px;background:rgba(255,255,255,.025);border:1px solid var(--line);border-left:2px solid var(--accent,var(--cyan));border-radius:11px}
+  .item .n{font-size:11.5px;color:var(--dim2);font-weight:700;padding-top:2px}
+  .item p{font-size:13.5px;color:#cfd6e6}
+  .item p b{color:#fff}
+  footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--dim2);font-size:12px;line-height:1.85}
+  footer b{color:var(--dim)}
+  @media (max-width:860px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    .row{grid-template-columns:20px 1fr 62px;gap:7px}
+    .txt{font-size:12px}
+    .val{font-size:11.5px}
+    .card h3{min-height:auto}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div class="brand"><span class="dot"></span>抖音热点 · 结构看板</div>
+    <div class="stamp">快照 2026-11-13 00:00</div>
+  </div>
+
+  <div class="hero">
+    <h1>热榜 20 条，<em>谁在抢位</em></h1>
+    <p>把一次热榜快照拆成热度、类别和榜单形态三个视角。看的是结构，不是排名本身。</p>
+    <div class="tagline">
+      <span class="tag">20 条热点</span>
+      <span class="tag">8 个类别</span>
+      <span class="tag">单次快照</span>
+      <span class="tag">第三方聚合数据</span>
+    </div>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>热度分布 <span>单位：万</span></h2>
+      <div class="sub">条长按最高值归一化，颜色代表类别。</div>
+      <div class="bars" id="bars"></div>
+    </div>
+    <div class="panel">
+      <h2>类别构成</h2>
+      <div class="sub">单条只归一类，按主属性划分。</div>
+      <div class="donutwrap">
+        <div id="donut"><div class="mid"><b>20</b><span>条热点</span></div></div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filters" id="filters"></div>
+  <div class="cards" id="cards"></div>
+
+  <div class="ana">
+    <div class="panel">
+      <h2>我的分析</h2>
+      <div class="sub">以下为基于本次快照的归纳，不是平台官方结论。</div>
+      <div class="note" id="note"></div>
+    </div>
+  </div>
+
+  <footer>
+    <b>数据说明：</b>本页为第三方聚合热榜的单次快照（榜面时间约 2026-11-13 00:00），非抖音官方实时榜，存在分钟级延迟。<br>
+    <b>热度口径：</b>热度值为平台侧综合指数，可横向比较，不等同播放量或互动量。<br>
+    <b>估算标注：</b>第 11–20 位仅获得约 767–773 万的区间，个体数值为区间内估算，条形长度仅供形态参考。<br>
+    <b>类别：</b>由人工按标题主属性判定，一条只归一类，边界话题取最贴近的一类。
+  </footer>
+</div>
+
+<script>
+var DATA = [
+  {r:1,t:"烟火美食夯吃挑战开赛了",h:1260.9,c:"商业"},
+  {r:2,t:"国内金饰价跌穿1200元",h:1101.2,c:"财经"},
+  {r:3,t:"亚太之问中国作答",h:1015.6,c:"时政"},
+  {r:4,t:"刘欢妻子发公开信：他是这样的人",h:995.5,c:"娱乐"},
+  {r:5,t:"秋冬落地签是一杯warm drink",h:919.7,c:"商业"},
+  {r:6,t:"黄仁勋辞职",h:869.8,c:"科技"},
+  {r:7,t:"朴树哥哥否认朴树去世",h:776.6,c:"娱乐"},
+  {r:8,t:"首个AI漫剧晚会阵容官宣",h:774.2,c:"科技"},
+  {r:9,t:"天凉热乎美食登场",h:774.0,c:"商业"},
+  {r:10,t:"中方驳斥G7涉台联合声明",h:773.9,c:"时政"},
+  {r:11,t:"时间从来证明不了什么",h:771.5,c:"情感",e:1},
+  {r:12,t:"证监会全力维护市场平稳运行",h:771.0,c:"财经",e:1},
+  {r:13,t:"「商家扬言取消外卖」系套路",h:770.4,c:"其他",e:1},
+  {r:14,t:"你爱的是花还是花为你开",h:769.8,c:"情感",e:1},
+  {r:15,t:"可以给我买麻辣烫糖葫芦吗",h:769.2,c:"情感",e:1},
+  {r:16,t:"根本没有这样的团战",h:768.6,c:"其他",e:1},
+  {r:17,t:"告别信开机",h:768.1,c:"娱乐",e:1},
+  {r:18,t:"天赐抖音直播首秀",h:767.6,c:"其他",e:1},
+  {r:19,t:"对口型挑战",h:767.2,c:"挑战跟风",e:1},
+  {r:20,t:"你还是逃不过覆面系",h:767.0,c:"挑战跟风",e:1}
+];
+var COLOR = {"时政":"#fe2c55","财经":"#ffb020","商业":"#25f4ee","娱乐":"#a855f7","科技":"#3b82f6","情感":"#f472b6","挑战跟风":"#34d399","其他":"#8d97ad"};
+var MAX = Math.max.apply(null, DATA.map(function(d){return d.h;}));
+
+var cats = [];
+DATA.forEach(function(d){ if(cats.indexOf(d.c)<0) cats.push(d.c); });
+var top = DATA[0], last = DATA[DATA.length-1];
+
+var kpis = [
+  {k:"榜单条数", v:String(DATA.length), u:"条"},
+  {k:"覆盖类别", v:String(cats.length), u:"类"},
+  {k:"最高热度", v:top.h.toFixed(1), u:"万"},
+  {k:"首尾倍差", v:(top.h/last.h).toFixed(2), u:"×"}
+];
+document.getElementById("kpis").innerHTML = kpis.map(function(x){
+  return '<div class="kpi"><div class="k">'+x.k+'</div><div class="v">'+x.v+'<small>'+x.u+'</small></div></div>';
+}).join("");
+
+var bars = document.getElementById("bars");
+bars.innerHTML = DATA.map(function(d){
+  var w = (d.h/MAX*100).toFixed(1);
+  return '<div class="row">'
+    + '<div class="rk '+(d.r<=3?"top":"")+'">'+d.r+'</div>'
+    + '<div class="track">'
+    +   '<div class="bar" data-w="'+w+'" style="background:linear-gradient(90deg,'+COLOR[d.c]+','+COLOR[d.c]+'99)"></div>'
+    +   '<div class="txt">'+d.t+(d.e?' <i style="color:#5f6980;font-style:normal">·估</i>':'')+'</div>'
+    + '</div>'
+    + '<div class="val">'+d.h.toFixed(1)+(d.e?'<i> 估</i>':'')+'</div>'
+    + '</div>';
+}).join("");
+
+var agg = {};
+DATA.forEach(function(d){ agg[d.c] = (agg[d.c]||0)+1; });
+var order = Object.keys(COLOR).filter(function(c){ return agg[c]; });
+var acc = 0, segs = [];
+order.forEach(function(c){
+  var p = agg[c]/DATA.length*100;
+  segs.push(COLOR[c]+" "+acc+"% "+(acc+p)+"%");
+  acc += p;
+});
+var donut = document.getElementById("donut");
+donut.style.background = "conic-gradient("+segs.join(",")+")";
+donut.style.boxShadow = "0 0 0 1px rgba(255,255,255,.06), 0 18px 50px -18px rgba(254,44,85,.35)";
+
+document.getElementById("legend").innerHTML = order.map(function(c){
+  return '<div class="lg"><span class="sw" style="background:'+COLOR[c]+'"></span>'+c+'<b>'+agg[c]+'</b></div>';
+}).join("");
+
+function renderCards(f){
+  var list = (f==="全部") ? DATA : DATA.filter(function(d){ return d.c===f; });
+  document.getElementById("cards").innerHTML = list.map(function(d){
+    return '<div class="card" style="--c:'+COLOR[d.c]+'">'
+      + '<div class="top"><span class="no">'+d.r+'</span><span class="cat">'+d.c+'</span></div>'
+      + '<h3>'+d.t+'</h3>'
+      + '<div class="heat"><b>'+d.h.toFixed(1)+'</b><span>万'+(d.e?" · 估算":"")+'</span></div>'
+      + '<div class="mini"><i data-w="'+(d.h/MAX*100).toFixed(1)+'"></i></div>'
+      + '</div>';
+  }).join("");
+  requestAnimationFrame(function(){
+    var m = document.querySelectorAll(".mini i");
+    for(var i=0;i<m.length;i++){ m[i].style.width = m[i].getAttribute("data-w")+"%"; }
+  });
+}
+renderCards("全部");
+
+var fEl = document.getElementById("filters");
+var opts = ["全部"].concat(order);
+fEl.innerHTML = opts.map(function(c,i){
+  return '<button class="chip '+(i===0?"on":"")+'" data-f="'+c+'">'+c+(c!=="全部"?" "+agg[c]:"")+'</button>';
+}).join("");
+fEl.addEventListener("click", function(e){
+  var b = e.target.closest(".chip");
+  if(!b) return;
+  var all = fEl.querySelectorAll(".chip");
+  for(var i=0;i<all.length;i++){ all[i].classList.remove("on"); }
+  b.classList.add("on");
+  renderCards(b.getAttribute("data-f"));
+});
+
+requestAnimationFrame(function(){
+  var bs = document.querySelectorAll(".bar");
+  for(var i=0;i<bs.length;i++){ bs[i].style.width = bs[i].getAttribute("data-w")+"%"; }
+});
+
+var insights = [
+  {c:"#25f4ee", h:"商业话题在头部占三席", p:"第 1、5、9 位都落在「秋冬美食／暖饮」这条线上（烟火美食挑战、warm drink、天凉热乎美食），三条合计热度 2954.6 万。更像平台在做季节性消费引导，而不是自然发酵的公共事件。"},
+  {c:"#ffb020", h:"硬新闻进了核心，但没有压倒性单一事件", p:"金饰价跌穿 1200 元、G7 涉台声明、证监会维护市场、黄仁勋辞职，四条财经时政占 20 条的 20%。它们是真正的事件型热点，但热度只落在 770–1100 万之间，没有一个像突发新闻那样把尾部甩开。"},
+  {c:"#a855f7", h:"尾部挤成一条线，是「无爆点日」的形状", p:"第 10 到第 20 位相差不到 7 万，十一个话题几乎平分流量。这种平台期通常意味着当天没有全民级事件，注意力被大量模板化内容分摊——穿搭、手势舞、对口型、情感短句都在这一档。"},
+  {c:"#f472b6", h:"名人三条加情感三条，参与门槛最低的那一类", p:"刘欢、朴树、天赐三条名人相关全部排在前 18 位；再加上「时间从来证明不了什么」「你爱的是花还是花为你开」这类情感短句，共 5 到 6 条属于零门槛跟拍内容。它们撑住了榜单的下半段。"}
+];
+document.getElementById("note").innerHTML = insights.map(function(x,i){
+  return '<div class="item" style="--accent:'+x.c+'"><div class="n">0'+(i+1)+'</div><p><b>'+x.h+'。</b>'+x.p+'</p></div>';
+}).join("");
+</script>
+</body>
+</html>
